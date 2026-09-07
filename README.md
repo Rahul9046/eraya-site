@@ -1,7 +1,21 @@
 # eraya.app — holding page
 
-The public page at [eraya.app](https://eraya.app) until the product opens.
-Served by GitHub Pages from the `main` branch of this repo.
+The public page at [www.eraya.app](https://www.eraya.app) until the product
+opens. Served by GitHub Pages from the `main` branch of this repo.
+
+## Why `www` and not the bare domain
+
+The apex `eraya.app` is held by a GoDaddy Airo "Coming Soon" site that was
+auto-generated at registration. While it holds the name, GoDaddy's DNS editor
+refuses any manual `@` A record — it fails with "Invalid data provided for
+record data", which reads like a typo and is not one. Records for any other
+name save normally.
+
+So the site is served on `www.eraya.app`, which needs only a CNAME, and the bare
+domain forwards to it. To move back to the apex later: disconnect the Airo site
+(Domain → Products, or delete the site under Websites + Marketing), put the four
+GitHub Pages A records on `@`, and change this repo's `CNAME` file back to
+`eraya.app`.
 
 ```
 index.html    the whole page — markup, styles and the mark, inlined
