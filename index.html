@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eraya</title>
+<meta name="description" content="Eraya is a community for divorced, separated and widowed people in India who are ready for their next chapter. Coming soon.">
+<link rel="canonical" href="https://eraya.app/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+<meta name="theme-color" content="#fbf7f2">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Eraya">
+<meta property="og:title" content="Eraya — coming soon">
+<meta property="og:description" content="A community for divorced, separated and widowed people in India who are ready for their next chapter.">
+<meta property="og:url" content="https://eraya.app/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* ===========================================================================
+   Eraya - holding page.
+
+   Self-contained on purpose. This page shares no code, no data and no network
+   call with the product: open the file and it renders. The tokens below are
+   transcribed from docs/02-brand.md so the two cannot look like different
+   companies, but nothing here imports anything from apps/web.
+   =========================================================================== */
+
+:root {
+  color-scheme: light;           /* the cream palette IS the brand - see 02-brand.md */
+
+  --canvas: #fbf7f2;
+  --line: #e6dacb;
+  --line-strong: #d7c7b3;
+  --ink: #2a211c;
+  --ink-muted: #6b5b51;
+  --ink-subtle: #7b6a5e;
+  --ember: #bd4f33;
+  --ember-text: #a8452c;         /* terracotta AS text; --ember is fill-only (4.4:1) */
+
+  --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          system-ui, "Helvetica Neue", Arial, sans-serif;
+
+  --gutter: clamp(1.5rem, 6vw, 5rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--canvas);     /* explicit: never inherit a host ground */
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- Frame ---------------------------------------------------------------
+   Full viewport, footer resting on the bottom hairline. 100svh rather than
+   100vh so mobile browser chrome cannot push the footer out of reach. */
+
+.page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding:
+    calc(env(safe-area-inset-top) + clamp(1.75rem, 5vw, 3rem))
+    calc(env(safe-area-inset-right) + var(--gutter))
+    calc(env(safe-area-inset-bottom) + clamp(1.25rem, 4vw, 2rem))
+    calc(env(safe-area-inset-left) + var(--gutter));
+}
+
+/* --- Stage ---------------------------------------------------------------
+   Mobile: one column, the lockup above the words.
+   From 62rem: the lockup sits left of a hairline and the words right of it -
+   the same left-aligned relationship the product's own hero uses. */
+
+.stage {
+  flex: 1;
+  display: grid;
+  align-content: center;
+  justify-content: start;
+  gap: clamp(2.25rem, 6vw, 3.5rem);
+  padding: clamp(2rem, 8vh, 5rem) 0;
+}
+
+@media (min-width: 62rem) {
+  .stage {
+    grid-template-columns: auto minmax(0, 36rem);
+    align-items: center;
+    justify-content: center;
+    gap: clamp(3rem, 6vw, 5rem);
+  }
+}
+
+/* --- Lockup --------------------------------------------------------------
+   The mark is the subject here rather than a label, so on a wide screen it is
+   set large and alone above the wordmark. On a phone it steps down and sits
+   beside it, where vertical space is the scarce thing. */
+
+.lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 62rem) {
+  .lockup {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+.mark {
+  display: block;
+  width: clamp(3.25rem, 13vw, 4.5rem);
+  height: auto;
+  flex: none;
+}
+
+@media (min-width: 62rem) {
+  .mark { width: 9.5rem; }
+}
+
+.wordmark {
+  margin: 0;
+  font-size: clamp(1.75rem, 7vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+@media (min-width: 62rem) {
+  .wordmark { font-size: 2.75rem; }
+}
+
+/* --- Words --------------------------------------------------------------- */
+
+.say {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+@media (min-width: 62rem) {
+  .say {
+    border-left: 1px solid var(--line);
+    padding-left: clamp(3rem, 5vw, 4.5rem);
+  }
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ember-text);
+}
+
+/* A slow pulse on the dot. It is the one thing that says "being worked on"
+   rather than "abandoned", which words alone say weakly on a holding page. */
+.status::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--ember);
+  flex: none;
+  animation: breathe 3.4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.82); }
+}
+
+/* Sized so the two authored lines each hold on one line at every width,
+   down to a 320px phone. Balancing is left off: the break is a writing
+   decision, not something to let the browser re-make. */
+.headline {
+  margin: 0;
+  font-size: clamp(1.875rem, 7.6vw, 3.125rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.headline span { display: block; }
+
+/* The only coloured line of a heading anywhere in the brand. */
+.headline .turn { color: var(--ember-text); }
+
+.lede {
+  margin: 0;
+  max-width: 34ch;
+  font-size: clamp(1.0625rem, 2.4vw, 1.1875rem);
+  line-height: 1.65;
+  color: var(--ink-muted);
+}
+
+.note {
+  margin: 0;
+  max-width: 42ch;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--ink-subtle);
+}
+
+/* 44px minimum target, per the product's own accessibility rules. */
+.note a {
+  display: inline-block;
+  min-height: 44px;
+  padding: 0.55rem 0;
+  font-weight: 600;
+  color: var(--ember-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: var(--line-strong);
+  transition: text-decoration-color 160ms ease, color 160ms ease;
+}
+
+.note a:hover {
+  color: var(--ember);
+  text-decoration-color: currentColor;
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-top: clamp(1rem, 3vw, 1.5rem);
+  border-top: 1px solid var(--line);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink-subtle);
+}
+
+.foot p { margin: 0; }
+
+/* --- Entrance ------------------------------------------------------------
+   One fade-and-rise on load, and nothing else on the page moves. */
+
+.rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rise-1 { animation-delay: 0.12s; }
+.rise-2 { animation-delay: 0.04s; }
+.rise-3 { animation-delay: 0.14s; }
+.rise-4 { animation-delay: 0.24s; }
+.rise-5 { animation-delay: 0.34s; }
+.rise-6 { animation-delay: 0.44s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(0.75rem); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .status::before { animation: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <main class="stage">
+    <div class="lockup rise rise-1">
+      <svg class="mark" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><rect width="1024" height="1024" rx="230" fill="#BD4F33"/><g transform="translate(0,0) scale(4.654545454545454)"><path d="M 55.00,42.00 C 53.33,43.67 48.33,48.50 46.00,52.00 C 43.67,55.50 42.17,59.67 41.00,63.00 C 39.83,66.33 39.33,68.33 39.00,72.00 C 38.67,75.67 38.67,81.33 39.00,85.00 C 39.33,88.67 40.00,91.00 41.00,94.00 C 42.00,97.00 42.67,99.67 45.00,103.00 C 47.33,106.33 51.83,111.17 55.00,114.00 C 58.17,116.83 59.67,117.83 64.00,120.00 C 68.33,122.17 75.00,124.83 81.00,127.00 C 87.00,129.17 94.00,130.33 100.00,133.00 C 106.00,135.67 112.83,139.83 117.00,143.00 C 121.17,146.17 123.00,149.00 125.00,152.00 C 127.00,155.00 128.17,157.83 129.00,161.00 C 129.83,164.17 129.67,169.33 130.00,171.00 C 130.33,172.67 130.83,171.67 131.00,171.00 C 131.17,170.33 130.67,168.50 131.00,167.00 C 131.33,165.50 132.67,164.67 133.00,162.00 C 133.33,159.33 133.50,154.67 133.00,151.00 C 132.50,147.33 131.67,143.83 130.00,140.00 C 128.33,136.17 125.83,131.67 123.00,128.00 C 120.17,124.33 119.83,123.33 113.00,118.00 C 106.17,112.67 89.50,101.83 82.00,96.00 C 74.50,90.17 71.33,86.67 68.00,83.00 C 64.67,79.33 63.83,77.50 62.00,74.00 C 60.17,70.50 58.00,67.33 57.00,62.00 C 56.00,56.67 56.33,45.33 56.00,42.00 C 55.67,38.67 56.67,40.33 55.00,42.00 Z" fill="#F8EADA"/><path d="M 33.00,104.00 C 32.83,106.83 32.67,116.83 33.00,121.00 C 33.33,125.17 33.50,125.50 35.00,129.00 C 36.50,132.50 39.50,138.50 42.00,142.00 C 44.50,145.50 47.17,147.83 50.00,150.00 C 52.83,152.17 55.83,153.67 59.00,155.00 C 62.17,156.33 62.50,157.17 69.00,158.00 C 75.50,158.83 91.33,159.17 98.00,160.00 C 104.67,160.83 106.17,162.00 109.00,163.00 C 111.83,164.00 112.50,164.00 115.00,166.00 C 117.50,168.00 122.33,174.33 124.00,175.00 C 125.67,175.67 125.50,171.33 125.00,170.00 C 124.50,168.67 121.33,168.00 121.00,167.00 C 120.67,166.00 122.67,165.00 123.00,164.00 C 123.33,163.00 123.50,162.33 123.00,161.00 C 122.50,159.67 121.00,157.00 120.00,156.00 C 119.00,155.00 117.67,155.67 117.00,155.00 C 116.33,154.33 117.00,153.33 116.00,152.00 C 115.00,150.67 114.00,149.00 111.00,147.00 C 108.00,145.00 105.17,142.67 98.00,140.00 C 90.83,137.33 75.50,133.67 68.00,131.00 C 60.50,128.33 56.67,126.00 53.00,124.00 C 49.33,122.00 48.67,121.33 46.00,119.00 C 43.33,116.67 39.00,112.50 37.00,110.00 C 35.00,107.50 34.67,105.00 34.00,104.00 C 33.33,103.00 33.17,101.17 33.00,104.00 Z" fill="#F4CFAE"/><path d="M 167.00,79.00 C 164.33,77.83 159.00,76.50 156.00,76.00 C 153.00,75.50 151.33,75.67 149.00,76.00 C 146.67,76.33 144.33,77.00 142.00,78.00 C 139.67,79.00 136.33,81.00 135.00,82.00 C 133.67,83.00 132.50,84.33 134.00,84.00 C 135.50,83.67 141.67,80.50 144.00,80.00 C 146.33,79.50 148.67,80.17 148.00,81.00 C 147.33,81.83 143.67,82.00 140.00,85.00 C 136.33,88.00 129.83,95.83 126.00,99.00 C 122.17,102.17 118.50,102.83 117.00,104.00 C 115.50,105.17 116.33,105.67 117.00,106.00 C 117.67,106.33 119.00,105.50 121.00,106.00 C 123.00,106.50 126.00,107.00 129.00,109.00 C 132.00,111.00 136.50,115.00 139.00,118.00 C 141.50,121.00 142.83,124.17 144.00,127.00 C 145.17,129.83 145.67,130.67 146.00,135.00 C 146.33,139.33 146.50,148.17 146.00,153.00 C 145.50,157.83 144.67,159.83 143.00,164.00 C 141.33,168.17 139.00,173.50 136.00,178.00 C 133.00,182.50 125.50,189.67 125.00,191.00 C 124.50,192.33 130.17,188.17 133.00,186.00 C 135.83,183.83 139.33,180.83 142.00,178.00 C 144.67,175.17 146.83,172.50 149.00,169.00 C 151.17,165.50 153.67,160.17 155.00,157.00 C 156.33,153.83 156.50,153.33 157.00,150.00 C 157.50,146.67 158.00,139.33 158.00,137.00 C 158.00,134.67 157.33,138.00 157.00,136.00 C 156.67,134.00 157.17,129.00 156.00,125.00 C 154.83,121.00 151.00,115.33 150.00,112.00 C 149.00,108.67 149.00,108.33 150.00,105.00 C 151.00,101.67 153.83,95.17 156.00,92.00 C 158.17,88.83 160.33,87.50 163.00,86.00 C 165.67,84.50 171.33,84.17 172.00,83.00 C 172.67,81.83 169.67,80.17 167.00,79.00 Z" fill="#F8EADA"/></g></svg>
+      <p class="wordmark">Eraya</p>
+    </div>
+
+    <div class="say">
+      <p class="status rise rise-2">Coming soon</p>
+
+      <h1 class="headline rise rise-3">
+        <span>Every ending can be</span>
+        <span class="turn">a new beginning.</span>
+      </h1>
+
+      <p class="lede rise rise-4">
+        A community for divorced, separated and widowed people in India
+        who are ready for their next chapter.
+      </p>
+
+      <p class="note rise rise-5">
+        We are building it carefully, and it opens soon. If you would like to
+        hear when it does, write to
+        <a href="mailto:hello@eraya.app?subject=Tell%20me%20when%20Eraya%20opens">hello@eraya.app</a>.
+      </p>
+    </div>
+  </main>
+
+  <footer class="foot rise rise-6">
+    <p>Eraya</p>
+    <p>Phoenix Origins</p>
+  </footer>
+</div>
+</body>
+</html>
