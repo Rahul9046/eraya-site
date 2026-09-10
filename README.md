@@ -1,7 +1,13 @@
-# eraya.app — holding page
+# eraya.app — holding page (retired)
 
-The public page at [www.eraya.app](https://www.eraya.app) until the product
-opens. Served by GitHub Pages from the `main` branch of this repo.
+**Not live.** This held `eraya.app` from 7 to 10 September 2026 while the product
+was built and a host was found. The product now serves the domain itself, from a
+Cloudflare Worker.
+
+The `CNAME` file has been removed: GitHub Pages asserts a claim on whatever
+hostname it names, and two hosts contesting one name fails intermittently rather
+than cleanly. To bring this back — as a maintenance page, or if the product ever
+needs the door held again — restore `CNAME`, re-enable Pages, and point DNS here.
 
 ## Why `www` and not the bare domain
 
